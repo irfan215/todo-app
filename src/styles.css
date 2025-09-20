@@ -1,0 +1,284 @@
+
+:root {
+    --color-primary: #0052cc;        
+    --color-primary-light: #0066ff; 
+    --color-background: #f5f7fa;    
+    --color-surface: #ffffff;       
+    --color-text: #333333;          
+    --color-text-light: #777777;    
+    --color-border: #e0e0e0;         
+    --color-pending: #FFA500;       
+    --color-in-progress: #007bff;   
+    --color-completed: #28a745; 
+    --color-hover-bg: #f0f4ff;        
+    --font-family-sans: 'Arial', sans-serif;
+    --border-radius: 8px;
+  }
+  
+  /* ========== Global Styles ========== */
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: var(--font-family-sans);
+    background-color: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.5;
+  }
+  
+  h1, h2, h3, h4 {
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+  
+  button {
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+  }
+  
+  /* ========== Layout / Container ========== */
+  
+  .app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1rem;
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    min-height: 100vh;
+  }
+  
+  .header-bar {
+    width: 100%;
+    background-color: var(--color-primary);
+    padding: 1rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+
+  }
+  
+  .header-bar h2 {
+    margin: 0;
+    font-size: 1.25rem;
+   
+  }
+  .head-text-color{
+        color: #fff;
+  }
+  /* ========== Search + Add Bar ========== */
+  
+  .toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 1rem 0;
+    margin-top: 100px;
+  }
+  
+  .add-button {
+    margin-left: 1rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--color-primary);
+    color: white;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+  }
+  
+  .add-button:hover {
+    background-color: var(--color-primary-light);
+  }
+  
+  /* ========== Todo Group (Status Sections) ========== */
+  
+  .todo-group {
+    margin-bottom: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+  }
+  
+  .group-header {
+    background-color: var(--color-background);
+    padding: 0.75rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .group-header h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .todo-items {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  /* ========== Todo Item ========== */
+  
+  .todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    transition: background-color 0.2s;
+  }
+  
+  .todo-item:first-child {
+    border-top: none;
+  }
+  
+  .todo-item:hover {
+    background-color: var(--color-hover-bg);
+  }
+  
+  .todo-item.completed .title {
+    text-decoration: line-through;
+    color: var(--color-text-light);
+  }
+  
+  .item-left {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    gap: 0.75rem;
+  }
+  
+  .status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  
+  .title {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+  
+  .description {
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    margin-top: 4px;
+  }
+  
+  /* ========== Hover actions (Edit / Delete buttons) ========== */
+  
+  .item-actions {
+    display: flex;
+    gap: 0.5rem;
+    visibility: hidden;
+  }
+  
+  .todo-item:hover .item-actions {
+    visibility: visible;
+  }
+  
+  .item-actions button {
+    background-color: transparent;
+    color: var(--color-text);
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--border-radius / 2);
+    border: 1px solid var(--color-border);
+    font-size: 0.875rem;
+  }
+  
+  .item-actions button:hover {
+    background-color: var(--color-primary-light);
+    color: white;
+    border-color: var(--color-primary-light);
+  }
+  .item‐actions {
+      display: flex;
+      justify-content: space-between;
+      width: 10%;
+
+  }
+  
+  /* ========== Form Page (Add / Edit) ========== */
+  
+  .form-page {
+    background-color: var(--color-surface);
+    border-radius: var(--border-radius);
+    padding: 1rem;
+  }
+  
+  .todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 0.25rem;
+    color: var(--color-text-light);
+  }
+  
+  .form-group input[type="text"],
+  .form-group textarea,
+  .form-group select {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  .form-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+  
+  .form-buttons button {
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+  }
+  
+  .form-buttons button:first-child {
+    background-color: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+  }
+  
+  .form-buttons button:last-child {
+    background-color: var(--color-primary);
+    color: white;
+    border: 1px solid var(--color-primary);
+  }
+  
+  .form-buttons button:last-child:hover {
+    background-color: var(--color-primary-light);
+  }
+  
+  /* ========== Miscellaneous / Utility ========== */
+  
+  .hidden {
+    display: none !important;
+  }
+  
